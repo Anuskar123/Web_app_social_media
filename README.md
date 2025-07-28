@@ -2,6 +2,44 @@
 
 A full-stack social media application built with the MERN stack (MongoDB, Express.js, React, Node.js).
 
+## 🎯 Current Status - Ready for Database Connection!
+
+✅ **Backend Server**: Running on port 5000 (waiting for database)  
+✅ **Frontend Client**: Running on port 3000 (fully functional UI)  
+✅ **Complete MERN Stack Implementation**: All features ready  
+⏳ **Database**: Needs MongoDB Atlas setup (5 minutes)
+
+### 🚀 **NEXT STEP: Complete Database Setup**
+
+**Option 1: MongoDB Atlas (Recommended - 5 minutes):**
+1. 📖 **Follow the guide**: Open `MONGODB_SETUP.md` in this project
+2. 🌐 **Create account**: Visit https://www.mongodb.com/atlas/database
+3. 🔗 **Get connection string** and update `server/.env`
+4. 🎉 **Done!** Your app will be fully functional
+
+**Option 2: Local MongoDB:**
+```bash
+# If you have MongoDB installed locally
+net start MongoDB
+```
+
+### 🔄 **After Database Connection:**
+
+1. **Restart the server** (it will auto-connect)
+2. **Add sample data**:
+   ```bash
+   cd server
+   npm run seed
+   ```
+3. **Test the app** at http://localhost:3000
+
+### ✨ **What You'll Have:**
+- Complete user registration and login
+- Create, edit, delete posts
+- Like and comment on posts
+- User profiles and social interactions
+- Professional-grade MERN stack portfolio project
+
 ## 🎯 Current Status - Successfully Running!
 
 ✅ **Backend Server**: Running on port 5000  
