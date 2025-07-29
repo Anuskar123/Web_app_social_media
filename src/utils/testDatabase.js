@@ -25,61 +25,18 @@ export const testDatabaseConnection = async () => {
     // Test 3: Check authentication status
     const { data: authData } = await supabase.auth.getSession()
     
-    return {
-      success: true,
-      message: 'Database connected successfully!',
-      userCount: count || 0,
-      authStatus: authData.session ? 'Authenticated' : 'Not authenticated',
-      supabaseUrl: supabase.supabaseUrl
+        return {
+          success: true,
+          message: 'Database connected successfully!',
+          userCount: count || 0,
+          authStatus: authData.session ? 'Authenticated' : 'Not authenticated',
+        }
+      } catch (err) {
+        console.error('Database test error:', err)
+        return {
+          success: false,
+          error: err.message,
+          details: err
+        }
+      }
     }
-
-  } catch (err) {
-    console.error('Connection test failed:', err)
-    return {
-      success: false,
-      error: err.message
-    }
-  }
-}
-
-// Test function to create a user (for testing)
-export const createTestUser = async (userData) => {
-  try {
-    const { data, error } = await supabase
-      .from('users')
-      .insert([userData])
-      .select()
-
-    if (error) throw error
-
-    return { success: true, data }
-  } catch (err) {
-    return { success: false, error: err.message }
-  }
-}
-
-// Test function to fetch posts (for testing)
-export const fetchTestPosts = async () => {
-  try {
-    const { data, error } = await supabase
-      .from('posts')
-      .select(`
-        *,
-        users (
-          id,
-          name,
-          username,
-          avatar,
-          verified
-        )
-      `)
-      .order('created_at', { ascending: false })
-      .limit(5)
-
-    if (error) throw error
-
-    return { success: true, data }
-  } catch (err) {
-    return { success: false, error: err.message }
-  }
-}

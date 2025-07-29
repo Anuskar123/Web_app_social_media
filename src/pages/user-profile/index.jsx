@@ -25,7 +25,6 @@ const UserProfile = () => {
       });
     });
   }, []);
-    // Removed leftover mock profile fields and fixed syntax error
 
   // No posts, photos, videos, or friends until user adds their own
   const [userPosts] = useState([]);
@@ -33,14 +32,6 @@ const UserProfile = () => {
   const [userVideos] = useState([]);
   const [userFriends] = useState([]);
   const mutualFriends = [];
-
-  // Mock photos data
-
-  // Mock videos data
-
-  // Mock friends data
-
-  // Removed all mock friends and mutual friends
 
   useEffect(() => {
     setIsLoading(false);
@@ -96,15 +87,22 @@ const UserProfile = () => {
     );
   }
 
+  // Determine if viewing own profile
+  const isOwnProfile = !userId || (userData && userId === userData.id);
+
   return (
     <div className="min-h-screen bg-background pt-16 lg:pl-64 pb-16 lg:pb-0">
       <div className="max-w-4xl mx-auto">
-        <ProfileHeader
-          user={userData}
-          isOwnProfile={isOwnProfile}
-          onEditProfile={handleEditProfile}
-          onFriendAction={handleFriendAction}
-        />
+        {userData ? (
+          <ProfileHeader
+            user={userData}
+            isOwnProfile={isOwnProfile}
+            onEditProfile={handleEditProfile}
+            onFriendAction={handleFriendAction}
+          />
+        ) : (
+          <div className="text-center text-red-500 py-8">No user data found.</div>
+        )}
 
         <ProfileTabs
           activeTab={activeTab}

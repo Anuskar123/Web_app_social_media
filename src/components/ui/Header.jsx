@@ -84,7 +84,7 @@ const Header = ({
         <div className="flex items-center justify-between h-16 px-4 lg:px-6">
           {/* Left Side: Hamburger, Back, Logo, Title */}
           <div className="flex items-center space-x-3">
-            {/* Hamburger Menu Icon (always visible) */}
+            {/* Hamburger Menu Icon (always visible, even on desktop) */}
             <button
               onClick={handleMenuToggle}
               className="menu-trigger p-2 border border-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -153,22 +153,20 @@ const Header = ({
               </Link>
             )}
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation (only show Profile) */}
             <nav className="hidden lg:flex items-center space-x-1 ml-4">
-              {navigationItems.slice(0, 4).map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                    isActive(item.path)
-                      ? 'bg-blue-500 text-white'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  <item.icon size={18} />
-                  <span>{item.label}</span>
-                </Link>
-              ))}
+              <Link
+                key="/user-profile"
+                to="/user-profile"
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                  isActive('/user-profile')
+                    ? 'bg-blue-500 text-white'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
+              >
+                <User size={18} />
+                <span>Profile</span>
+              </Link>
             </nav>
           </div>
         </div>
@@ -183,7 +181,7 @@ const Header = ({
         />
       )}
 
-      {/* Sidebar (visible on all screens) */}
+      {/* Sidebar (hidden on desktop, visible on mobile/tablet) */}
       <div
         ref={sidebarRef}
         className={`fixed top-0 left-0 h-full w-80 max-w-xs bg-white dark:bg-gray-900 shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
@@ -220,41 +218,25 @@ const Header = ({
           </div>
         </div>
 
-        {/* User Profile Section */}
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-            </div>
-            <div>
-              <p className="font-semibold text-gray-900 dark:text-white">John Doe</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">@john_doe</p>
-            </div>
-          </div>
-        </div>
+        {/* User Profile Section (empty for production, no sample user) */}
 
         {/* Navigation Items */}
         <nav className="flex-1 overflow-y-auto">
           <div className="px-2 py-4 space-y-1">
-            {navigationItems.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => handleMenuItemClick(item.path)}
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
-                  isActive(item.path)
-                    ? 'bg-blue-500 text-white'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                }`}
-              >
-                <item.icon size={20} />
-                <span className="font-medium">{item.label}</span>
-                {item.path === '/notifications' && unreadNotifications > 0 && (
-                  <span className="ml-auto bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {unreadNotifications > 9 ? '9+' : unreadNotifications}
-                  </span>
-                )}
-              </button>
-            ))}
+            {/* Sidebar Navigation (only show Profile) */}
+            <Link
+              key="/user-profile"
+              to="/user-profile"
+              onClick={() => setIsMenuOpen(false)}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
+                isActive('/user-profile')
+                  ? 'bg-blue-500 text-white'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+              }`}
+            >
+              <User size={20} />
+              <span className="font-medium">Profile</span>
+            </Link>
           </div>
         </nav>
 

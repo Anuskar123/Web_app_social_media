@@ -3,8 +3,6 @@ import BottomNavigation from 'components/ui/BottomNavigation';
 import Header from 'components/ui/Header';
 import { PostCard, StoryCarousel, CreatePostPrompt } from './components';
 import { dbHelpers } from '../../lib/supabase';
-import { testDatabaseConnection } from '../../utils/testDatabase';
-import SimpleTest from '../../components/SimpleTest';
 
 const NewsFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -14,12 +12,6 @@ const NewsFeed = () => {
   const [dbTestResult, setDbTestResult] = useState(null);
 
   // Test database connection
-  const handleTestDatabase = async () => {
-    console.log('Testing database connection...');
-    const result = await testDatabaseConnection();
-    setDbTestResult(result);
-    console.log('Database test result:', result);
-  };
 
   // Load posts from database
   useEffect(() => {
@@ -39,7 +31,7 @@ const NewsFeed = () => {
           id: post.id,
           user: {
             name: post.users.name,
-            avatar: post.users.avatar || '/assets/images/no_image.png',
+            avatar: post.users.avatar,
             verified: post.users.verified
           },
           timestamp: formatTimestamp(post.created_at),
@@ -51,26 +43,21 @@ const NewsFeed = () => {
           isLiked: post.post_likes?.some(like => like.user_id === 'current_user_id'), // Replace with actual user ID
           location: post.location
         }));
-        
         setPosts(transformedPosts);
       } else {
-        // Fall back to mock data if no database posts
-        loadMockPosts();
+        // No posts to show until users create their own
+        setPosts([]);
       }
     } catch (err) {
       console.error('Error loading posts from database:', err);
-      setError('Failed to load posts from database, using mock data');
-      // Fall back to mock data
-      loadMockPosts();
+      setError('Failed to load posts from database.');
+      setPosts([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockPosts = () => {
-    // No mock posts for a clean Facebook/Instagram-like experience
-    setPosts([]);
-  };
+
 
   const formatTimestamp = (timestamp) => {
     const now = new Date();
@@ -90,8 +77,6 @@ const NewsFeed = () => {
     try {
       await loadPosts();
     } catch (err) {
-      console.error('Error refreshing posts:', err);
-    } finally {
       setRefreshing(false);
     }
   };
@@ -102,10 +87,10 @@ const NewsFeed = () => {
       if (!post) return;
 
       // Optimistic update
-      setPosts(posts.map(p => 
-        p.id === postId 
-          ? { 
-              ...p, 
+      setPosts(posts.map(p =>
+        p.id === postId
+          ? {
+              ...p,
               isLiked: !p.isLiked,
               likes: p.isLiked ? p.likes - 1 : p.likes + 1
             }
@@ -121,10 +106,10 @@ const NewsFeed = () => {
     } catch (err) {
       console.error('Error updating like:', err);
       // Revert optimistic update on error
-      setPosts(posts.map(p => 
-        p.id === postId 
-          ? { 
-              ...p, 
+      setPosts(posts.map(p =>
+        p.id === postId
+          ? {
+              ...p,
               isLiked: !p.isLiked,
               likes: p.isLiked ? p.likes + 1 : p.likes - 1
             }
