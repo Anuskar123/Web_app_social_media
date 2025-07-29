@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
+import StoryCarousel from '../../news-feed/components/StoryCarousel';
 
 const ProfileHeader = ({ user, isOwnProfile, onEditProfile, onFriendAction }) => {
   const [showOptionsMenu, setShowOptionsMenu] = useState(false);
+  // Provide default stats if missing
+  const stats = user.stats || { posts: 0, friends: 0, followers: 0 };
 
   const handlePrimaryAction = () => {
     if (isOwnProfile) {
@@ -41,6 +44,11 @@ const ProfileHeader = ({ user, isOwnProfile, onEditProfile, onFriendAction }) =>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
       </div>
 
+      {/* Stories Carousel */}
+      <div className="px-4 pt-4">
+        <StoryCarousel />
+      </div>
+
       {/* Profile Content */}
       <div className="relative px-4 pb-4">
         {/* Profile Picture */}
@@ -72,15 +80,15 @@ const ProfileHeader = ({ user, isOwnProfile, onEditProfile, onFriendAction }) =>
               {/* Stats */}
               <div className="flex items-center justify-center md:justify-start space-x-6 text-sm">
                 <div className="text-center">
-                  <span className="font-semibold text-text-primary block">{user.stats.posts.toLocaleString()}</span>
+                  <span className="font-semibold text-text-primary block">{stats.posts?.toLocaleString?.() ?? '0'}</span>
                   <span className="text-text-secondary">Posts</span>
                 </div>
                 <div className="text-center">
-                  <span className="font-semibold text-text-primary block">{user.stats.friends.toLocaleString()}</span>
+                  <span className="font-semibold text-text-primary block">{stats.friends?.toLocaleString?.() ?? '0'}</span>
                   <span className="text-text-secondary">Friends</span>
                 </div>
                 <div className="text-center">
-                  <span className="font-semibold text-text-primary block">{user.stats.followers.toLocaleString()}</span>
+                  <span className="font-semibold text-text-primary block">{stats.followers?.toLocaleString?.() ?? '0'}</span>
                   <span className="text-text-secondary">Followers</span>
                 </div>
               </div>

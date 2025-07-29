@@ -5,6 +5,11 @@ import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
 
 const EditProfileModal = ({ user, isOpen, onClose, onSave }) => {
+  if (!user) {
+    return (
+      <div className="text-center text-red-500 py-8">No user data available for editing.</div>
+    );
+  }
   const [formData, setFormData] = useState({
     name: user.name || '',
     bio: user.bio || '',

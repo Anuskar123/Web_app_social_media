@@ -2,6 +2,11 @@ import React from 'react';
 import Icon from '../../../components/AppIcon';
 
 const AboutTab = ({ user }) => {
+  if (!user) {
+    return (
+      <div className="text-center text-red-500 py-8">No user data available.</div>
+    );
+  }
   const aboutSections = [
     {
       title: 'Basic Information',

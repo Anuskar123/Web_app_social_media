@@ -20,10 +20,10 @@ const Messages = () => {
   const mockConversations = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Dawa",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       lastMessage: "Hey! How was your weekend? I went hiking and it was amazing!",
-      lastMessageSender: "Sarah Johnson",
+      lastMessageSender: "Ayusha",
       timestamp: new Date(Date.now() - 300000),
       unreadCount: 2,
       isOnline: true,
@@ -32,7 +32,7 @@ const Messages = () => {
     },
     {
       id: 2,
-      name: "Mike Chen",
+      name: "Utsab",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       lastMessage: "You: Thanks for the help with the project! Really appreciate it.",
       lastMessageSender: "You",
@@ -44,10 +44,10 @@ const Messages = () => {
     },
     {
       id: 3,
-      name: "Design Team",
+      name: "Rythmn",
       avatar: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=150&h=150&fit=crop&crop=face",
       lastMessage: "Alex: The new mockups are ready for review. Check them out!",
-      lastMessageSender: "Alex Rivera",
+      lastMessageSender: "Ythmn",
       timestamp: new Date(Date.now() - 3600000),
       unreadCount: 5,
       isOnline: true,
@@ -56,10 +56,10 @@ const Messages = () => {
     },
     {
       id: 4,
-      name: "Emma Wilson",
+      name: "Sandesh",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       lastMessage: "Looking forward to our meeting tomorrow! See you at 2 PM.",
-      lastMessageSender: "Emma Wilson",
+      lastMessageSender: "Sandesh",
       timestamp: new Date(Date.now() - 7200000),
       unreadCount: 0,
       isOnline: false,
@@ -68,7 +68,7 @@ const Messages = () => {
     },
     {
       id: 5,
-      name: "David Park",
+      name: "Ayusha",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       lastMessage: "You: Perfect! Let\'s schedule that for next week.",
       lastMessageSender: "You",
@@ -80,7 +80,7 @@ const Messages = () => {
     },
     {
       id: 6,
-      name: "Lisa Rodriguez",
+      name: "Zoro Tamang",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
       lastMessage: "The presentation went really well! Thanks for your input.",
       lastMessageSender: "Lisa Rodriguez",
@@ -97,7 +97,7 @@ const Messages = () => {
     1: [
       {
         id: 1,
-        sender: "Sarah Johnson",
+        sender: "Ayusha",
         text: "Hey! How was your weekend?",
         timestamp: new Date(Date.now() - 3600000),
         status: "read",
@@ -113,7 +113,7 @@ const Messages = () => {
       },
       {
         id: 3,
-        sender: "Sarah Johnson",
+        sender: "Ayusha",
         text: "I went hiking and it was amazing! The weather was perfect.",
         timestamp: new Date(Date.now() - 3000000),
         status: "read",
@@ -121,7 +121,7 @@ const Messages = () => {
       },
       {
         id: 4,
-        sender: "Sarah Johnson",
+        sender: "Ayusha",
         image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop",
         text: "Check out this view from the summit!",
         timestamp: new Date(Date.now() - 2700000),
@@ -138,7 +138,7 @@ const Messages = () => {
       },
       {
         id: 6,
-        sender: "Sarah Johnson",
+        sender: "Ayusha",
         text: "It's the Eagle Peak trail. About 8 miles round trip but totally worth it!\n\nYou should definitely try it sometime. The sunrise views are incredible too.",
         timestamp: new Date(Date.now() - 300000),
         status: "delivered",
@@ -184,7 +184,7 @@ const Messages = () => {
       },
       {
         id: 5,
-        sender: "Mike Chen",
+        sender: "Ronaldo Shrestha",
         text: "That makes perfect sense! Thank you so much for the help.",
         timestamp: new Date(Date.now() - 6400000),
         status: "read",
@@ -199,48 +199,7 @@ const Messages = () => {
         type: "text"
       }
     ],
-    3: [
-      {
-        id: 1,
-        sender: "Alex Rivera",
-        text: "Good morning team! I\'ve uploaded the new design mockups to Figma.",
-        timestamp: new Date(Date.now() - 14400000),
-        status: "read",
-        type: "text"
-      },
-      {
-        id: 2,
-        sender: "Jessica Kim",
-        text: "Great! I\'ll review them this afternoon and provide feedback.",
-        timestamp: new Date(Date.now() - 14200000),
-        status: "read",
-        type: "text"
-      },
-      {
-        id: 3,
-        sender: "You",
-        text: "The color scheme looks fantastic! Really love the new branding direction.",
-        timestamp: new Date(Date.now() - 14000000),
-        status: "read",
-        type: "text"
-      },
-      {
-        id: 4,
-        sender: "Alex Rivera",
-        text: "Thanks! I spent a lot of time on the color palette. Wanted something modern but accessible.",
-        timestamp: new Date(Date.now() - 13800000),
-        status: "read",
-        type: "text"
-      },
-      {
-        id: 5,
-        sender: "Alex Rivera",
-        text: "The new mockups are ready for review. Check them out!",
-        timestamp: new Date(Date.now() - 3600000),
-        status: "delivered",
-        type: "text"
-      }
-    ]
+    3: []
   };
 
   useEffect(() => {

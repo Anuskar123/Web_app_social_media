@@ -12,33 +12,27 @@ const StoryCarousel = () => {
     },
     {
       id: 1,
-      user: { name: 'John Doe', avatar: '/assets/images/no_image.png' },
+      user: { name: 'Ayusha', avatar: '/assets/images/no_image.png' },
       hasStory: true,
       viewed: false
     },
     {
       id: 2,
-      user: { name: 'Sarah', avatar: '/assets/images/no_image.png' },
+      user: { name: 'Utsab', avatar: '/assets/images/no_image.png' },
       hasStory: true,
       viewed: true
     },
     {
       id: 3,
-      user: { name: 'Mike Chen', avatar: '/assets/images/no_image.png' },
+      user: { name: 'Ythmn', avatar: '/assets/images/no_image.png' },
       hasStory: true,
       viewed: false
     },
     {
       id: 4,
-      user: { name: 'Emma Wilson', avatar: '/assets/images/no_image.png' },
+      user: { name: 'Sandesh', avatar: '/assets/images/no_image.png' },
       hasStory: true,
       viewed: true
-    },
-    {
-      id: 5,
-      user: { name: 'David Kim', avatar: '/assets/images/no_image.png' },
-      hasStory: true,
-      viewed: false
     }
   ];
 
@@ -48,7 +42,7 @@ const StoryCarousel = () => {
         {stories.map((story) => (
           <div key={story.id} className="flex-shrink-0">
             {story.isMyStory ? (
-              <Link to="/create-story" className="flex flex-col items-center space-y-1">
+              <Link to="/" className="flex flex-col items-center space-y-1">
                 <div className="relative">
                   <AppImage
                     src={story.user.avatar}
@@ -66,7 +60,7 @@ const StoryCarousel = () => {
                 </span>
               </Link>
             ) : (
-              <Link to={`/story/${story.id}`} className="flex flex-col items-center space-y-1">
+              <Link to="/" className="flex flex-col items-center space-y-1">
                 <div className="relative">
                   <AppImage
                     src={story.user.avatar}
