@@ -10,32 +10,32 @@ const TagFriends = ({ taggedFriends, onTaggedFriendsChange }) => {
   const mockFriends = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      username: "@sarah.j",
+      name: "Rythmn",
+      username: "@rythmn",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
     },
     {
       id: 2,
-      name: "Mike Chen",
-      username: "@mike.chen",
+      name: "Sandesha Kumar",
+      username: "@sandesha.kumar",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
     },
     {
       id: 3,
-      name: "Emily Davis",
-      username: "@emily.d",
+      name: "Ayusha tamang",
+      username: "@ayusha.tamang",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
     },
     {
       id: 4,
-      name: "Alex Rodriguez",
-      username: "@alex.rod",
+      name: "Utsab chettri",
+      username: "@utsab.chettri",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
     },
     {
       id: 5,
-      name: "Jessica Wilson",
-      username: "@jess.w",
+      name: "Luffy shrestha",
+      username: "@luffy.shrestha",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
     }
   ];

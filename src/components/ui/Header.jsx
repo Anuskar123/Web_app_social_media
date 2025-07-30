@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, Bell, ArrowLeft, Menu, X, Home, MessageCircle, Plus, User, Settings } from 'lucide-react';
 import Icon from '../AppIcon';
-import Button from './Button';
 
 const Header = ({ 
   title = 'SocialConnect', 
@@ -14,7 +13,7 @@ const Header = ({
   const location = useLocation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [unreadNotifications] = useState(3); // Mock unread count
+  const [unreadNotifications] = useState(3);
   const sidebarRef = useRef(null);
   const overlayRef = useRef(null);
 
@@ -52,7 +51,7 @@ const Header = ({
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -73,21 +72,16 @@ const Header = ({
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleMenuItemClick = (path) => {
-    setIsMenuOpen(false);
-    navigate(path);
-  };
-
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex items-center justify-between h-16 px-4 lg:px-6">
-          {/* Left Side: Hamburger, Back, Logo, Title */}
+          {/* Left Side */}
           <div className="flex items-center space-x-3">
-            {/* Hamburger Menu Icon (always visible, even on desktop) */}
+            {/* Hamburger Menu Button */}
             <button
               onClick={handleMenuToggle}
-              className="menu-trigger p-2 border border-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="menu-trigger p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMenuOpen}
             >
@@ -98,30 +92,31 @@ const Header = ({
               )}
             </button>
 
-            {showBack && !isMenuOpen ? (
+            {/* Back Button (mobile only) */}
+            {showBack && (
               <button
                 onClick={() => navigate(-1)}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors md:hidden"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors md:hidden"
                 aria-label="Go back"
               >
                 <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               </button>
-            ) : (
-              <Link to="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <Icon name="Users" size={20} color="white" />
-                </div>
-                <span className="text-xl font-semibold text-gray-900 dark:text-white hidden sm:block">SocialConnect</span>
-              </Link>
             )}
 
-            {showBack && title && (
-              <h1 className="text-lg font-semibold text-gray-900 dark:text-white hidden md:block">{title}</h1>
-            )}
+            {/* Logo and Title */}
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                <Icon name="Users" size={20} color="white" />
+              </div>
+              <span className="text-lg font-semibold text-gray-900 dark:text-white hidden sm:block">
+                {title}
+              </span>
+            </Link>
           </div>
 
           {/* Right Side */}
           <div className="flex items-center space-x-2">
+            {/* Custom Right Action */}
             {rightAction && (
               <div className="mr-2">{rightAction}</div>
             )}
@@ -130,7 +125,7 @@ const Header = ({
             {showSearch && (
               <Link
                 to="/search"
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label="Search"
               >
                 <Search className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -141,7 +136,7 @@ const Header = ({
             {showNotifications && (
               <Link
                 to="/notifications"
-                className="relative p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                className="relative p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label={`Notifications${unreadNotifications > 0 ? ` (${unreadNotifications} unread)` : ''}`}
               >
                 <Bell className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -152,27 +147,11 @@ const Header = ({
                 )}
               </Link>
             )}
-
-            {/* Desktop Navigation (only show Profile) */}
-            <nav className="hidden lg:flex items-center space-x-1 ml-4">
-              <Link
-                key="/user-profile"
-                to="/user-profile"
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                  isActive('/user-profile')
-                    ? 'bg-blue-500 text-white'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                }`}
-              >
-                <User size={18} />
-                <span>Profile</span>
-              </Link>
-            </nav>
           </div>
         </div>
       </header>
 
-      {/* Sidebar Overlay (visible on all screens) */}
+      {/* Sidebar Overlay */}
       {isMenuOpen && (
         <div 
           ref={overlayRef}
@@ -181,7 +160,7 @@ const Header = ({
         />
       )}
 
-      {/* Sidebar (hidden on desktop, visible on mobile/tablet) */}
+      {/* Sidebar Menu */}
       <div
         ref={sidebarRef}
         className={`fixed top-0 left-0 h-full w-80 max-w-xs bg-white dark:bg-gray-900 shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
@@ -193,50 +172,46 @@ const Header = ({
       >
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-          <Link to="/" className="flex items-center space-x-2" onClick={() => setIsMenuOpen(false)}>
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2" 
+            onClick={() => setIsMenuOpen(false)}
+          >
             <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
               <Icon name="Users" size={20} color="white" />
             </div>
-            <span className="text-xl font-semibold text-gray-900 dark:text-white">SocialConnect</span>
+            <span className="text-xl font-semibold text-gray-900 dark:text-white">
+              SocialConnect
+            </span>
           </Link>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-            </button>
-            {/* Collapse Arrow Button */}
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              aria-label="Collapse sidebar"
-            >
-              <Icon name="ChevronLeft" size={20} className="text-gray-600 dark:text-gray-300" />
-            </button>
-          </div>
+          
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          </button>
         </div>
-
-        {/* User Profile Section (empty for production, no sample user) */}
 
         {/* Navigation Items */}
         <nav className="flex-1 overflow-y-auto">
           <div className="px-2 py-4 space-y-1">
-            {/* Sidebar Navigation (only show Profile) */}
-            <Link
-              key="/user-profile"
-              to="/user-profile"
-              onClick={() => setIsMenuOpen(false)}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
-                isActive('/user-profile')
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
-            >
-              <User size={20} />
-              <span className="font-medium">Profile</span>
-            </Link>
+            {navigationItems.map(({ label, path, icon: IconComponent }) => (
+              <Link
+                key={path}
+                to={path}
+                onClick={() => setIsMenuOpen(false)}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
+                  isActive(path)
+                    ? 'bg-blue-500 text-white'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
+              >
+                <IconComponent size={20} />
+                <span className="font-medium">{label}</span>
+              </Link>
+            ))}
           </div>
         </nav>
 

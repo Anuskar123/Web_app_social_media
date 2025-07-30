@@ -16,7 +16,7 @@ const Notifications = () => {
         id: 1,
         type: 'like',
         user: {
-          name: 'Sarah Johnson',
+          name: 'Dawa Sherpa',
           avatar: '/assets/images/no_image.png',
           verified: true
         },
@@ -32,7 +32,7 @@ const Notifications = () => {
         id: 2,
         type: 'comment',
         user: {
-          name: 'Mike Chen',
+          name: 'Rythmn',
           avatar: '/assets/images/no_image.png',
           verified: false
         },
@@ -50,7 +50,7 @@ const Notifications = () => {
         id: 3,
         type: 'follow',
         user: {
-          name: 'Emma Wilson',
+          name: 'Sandesha Kumar',
           avatar: '/assets/images/no_image.png',
           verified: true
         },
@@ -65,7 +65,7 @@ const Notifications = () => {
         id: 4,
         type: 'mention',
         user: {
-          name: 'David Kim',
+          name: 'Ayusha Tamang',
           avatar: '/assets/images/no_image.png',
           verified: false
         },
@@ -81,7 +81,7 @@ const Notifications = () => {
         id: 5,
         type: 'share',
         user: {
-          name: 'Alex Rodriguez',
+          name: 'utsab chettri',
           avatar: '/assets/images/no_image.png',
           verified: false
         },
@@ -97,7 +97,7 @@ const Notifications = () => {
         id: 6,
         type: 'friend_request',
         user: {
-          name: 'Lisa Chang',
+          name: 'Ronaldo Shrestha',
           avatar: '/assets/images/no_image.png',
           verified: false
         },
@@ -112,7 +112,7 @@ const Notifications = () => {
         id: 7,
         type: 'post_reaction',
         user: {
-          name: 'Tom Wilson',
+          name: 'Luffy Shrestha',
           avatar: '/assets/images/no_image.png',
           verified: true
         },
@@ -129,7 +129,7 @@ const Notifications = () => {
         id: 8,
         type: 'birthday',
         user: {
-          name: 'Jessica Lee',
+          name: 'Tom butler',
           avatar: '/assets/images/no_image.png',
           verified: false
         },

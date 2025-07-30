@@ -252,19 +252,19 @@ const PostCard = ({ post, onLike, onComment, onShare }) => {
                   onClick={() => handleShare('whatsapp')}
                   className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-white"
                 >
-                  📱 WhatsApp
+                   WhatsApp
                 </button>
                 <button
                   onClick={() => handleShare('twitter')}
                   className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-white"
                 >
-                  🐦 Twitter
+                   Twitter
                 </button>
                 <button
                   onClick={() => handleShare('facebook')}
                   className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-white"
                 >
-                  📘 Facebook
+                  Facebook
                 </button>
               </div>
             )}

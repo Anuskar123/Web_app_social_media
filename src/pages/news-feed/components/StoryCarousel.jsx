@@ -24,7 +24,7 @@ const StoryCarousel = () => {
     },
     {
       id: 3,
-      user: { name: 'Ythmn', avatar: '/assets/images/no_image.png' },
+      user: { name: 'Rythmn', avatar: '/assets/images/no_image.png' },
       hasStory: true,
       viewed: false
     },

@@ -48,8 +48,8 @@ const SearchResults = () => {
       users: [
         {
           id: 1,
-          name: 'Sarah Johnson',
-          username: '@sarah.j',
+          name: 'Dawa Sherpa',
+          username: '@dawa.s',
           avatar: '/assets/images/no_image.png',
           verified: true,
           followers: '2.5k',
@@ -57,8 +57,8 @@ const SearchResults = () => {
         },
         {
           id: 2,
-          name: 'Mike Chen',
-          username: '@mike_codes',
+          name: 'Rythmn',
+          username: '@rythmn',
           avatar: '/assets/images/no_image.png',
           verified: false,
           followers: '1.2k',
@@ -69,7 +69,7 @@ const SearchResults = () => {
         {
           id: 1,
           user: {
-            name: 'John Doe',
+            name: 'Sandesha Kumar',
             avatar: '/assets/images/no_image.png'
           },
           content: 'Just finished an amazing React project! The new hooks are incredible 🚀',
@@ -80,7 +80,7 @@ const SearchResults = () => {
         {
           id: 2,
           user: {
-            name: 'Emma Wilson',
+            name: 'Ayusha Tamang',
             avatar: '/assets/images/no_image.png'
           },
           content: 'JavaScript tips that changed my coding game forever! Thread 🧵',
